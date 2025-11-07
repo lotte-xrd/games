@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Palavras de Vida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <div id="startScreen" class="screen active">
+        <div class="start-content">
+            <h1 class="logo">Palavras de Vida</h1>
+            <div class="verse-anchor">
+                <p class="verse-text">"O fruto do Espírito é amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão e domínio próprio."</p>
+                <p class="verse-ref">Gálatas 5:22-23</p>
+            </div>
+            <p class="start-message">Quem permanece na Luz, dá fruto em abundância.</p>
+            <div class="start-buttons">
+                <button id="startBtn" class="btn-primary">Começar</button>
+                <button id="howToPlayBtn" class="btn-secondary">Como jogar</button>
+                <button id="rankingBtn" class="btn-secondary">🏆 Ver Ranking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela Como Jogar -->
+    <div id="howToPlayScreen" class="screen">
+        <div class="howto-content">
+            <h2 class="howto-title">Como Jogar</h2>
+            <div class="howto-steps">
+                <p class="howto-text">Arrasta o dedo pelas letras para formar as palavras da lista.</p>
+                <p class="howto-text">Valem linhas retas: horizontal, vertical e diagonal.</p>
+            </div>
+            <button id="backFromHowToBtn" class="btn-primary">Entendi</button>
+        </div>
+    </div>
+
+    <!-- Tela de Seleção de Nome -->
+    <div id="nameScreen" class="screen">
+        <div class="name-content">
+            <h2 class="name-title">Qual é o teu nome?</h2>
+            <input type="text" id="playerName" class="name-input" placeholder="Digita o teu nome" maxlength="20" autocomplete="off">
+            <p class="name-hint">Este nome aparecerá no ranking</p>
+            <button id="confirmNameBtn" class="btn-primary">Confirmar e Continuar</button>
+            <button id="backFromNameBtn" class="btn-secondary">Voltar</button>
+        </div>
+    </div>
+
+    <!-- Seletor de Níveis -->
+    <div id="levelSelectScreen" class="screen">
+        <div class="level-select-content">
+            <h2 class="level-select-title">Escolhe um Fruto</h2>
+            <div id="levelGrid" class="level-grid"></div>
+            <button id="backToStartBtn" class="btn-secondary">Voltar</button>
+        </div>
+    </div>
+
+    <!-- Tela de Ranking -->
+    <div id="rankingScreen" class="screen">
+        <div class="ranking-content">
+            <h2 class="ranking-title">🏆 Ranking</h2>
+            <div class="ranking-filters">
+                <select id="levelFilter" class="filter-select">
+                    <option value="all">Todos os Níveis</option>
+                </select>
+            </div>
+            <div id="rankingList" class="ranking-list"></div>
+            <div class="ranking-pagination">
+                <button id="prevPageBtn" class="pagination-btn" disabled>← Anterior</button>
+                <span id="pageInfo" class="page-info">Página 1</span>
+                <button id="nextPageBtn" class="pagination-btn">Próxima →</button>
+            </div>
+            <button id="backToStartFromRankingBtn" class="btn-primary">Voltar ao Início</button>
+        </div>
+    </div>
+
+    <!-- Tela de Jogo -->
+    <div id="gameScreen" class="screen">
+        <div class="game-header">
+            <div class="game-header-left">
+                <button id="pauseBtn" class="icon-btn">⏸</button>
+                <h3 id="levelTitle" class="level-title"></h3>
+            </div>
+            <div class="game-header-right">
+                <span id="gameTimer" class="timer-display">00:00</span>
+                <span id="wordsRemaining" class="words-counter">0 palavras</span>
+                <button id="hintBtn" class="btn-hint" title="Dica (1x)">💡</button>
+            </div>
+        </div>
+        <div id="gameArea" class="game-area">
+            <div id="wordGrid" class="word-grid"></div>
+        </div>
+        <div class="words-list-container">
+            <div id="wordsList" class="words-list"></div>
+        </div>
+    </div>
+
+    <!-- Tela de Pausa -->
+    <div id="pauseScreen" class="screen overlay">
+        <div class="pause-content">
+            <h2 class="pause-title">Pausa</h2>
+            <div class="pause-options">
+                <label class="toggle-label">
+                    <input type="checkbox" id="soundToggle" checked>
+                    <span>Som</span>
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="vibrationToggle" checked>
+                    <span>Vibração</span>
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="contrastToggle">
+                    <span>Alto Contraste</span>
+                </label>
+            </div>
+            <div class="pause-buttons">
+                <button id="resumeBtn" class="btn-primary">Continuar</button>
+                <button id="quitBtn" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Conclusão -->
+    <div id="completionModal" class="screen overlay">
+        <div class="modal-content">
+            <h2 id="completionTitle" class="completion-title"></h2>
+            <div class="completion-verse">
+                <p id="verseRef" class="verse-ref"></p>
+                <p id="verseText" class="verse-text"></p>
+            </div>
+            <p id="impactPhrase" class="impact-phrase"></p>
+            <div class="completion-stats">
+                <p>Pontuação: <span id="finalScore">0</span></p>
+                <p>Tempo: <span id="finalTime">0s</span></p>
+            </div>
+            <div class="completion-buttons">
+                <button id="repeatBtn" class="btn-secondary">Repetir</button>
+                <button id="nextBtn" class="btn-primary">Próximo</button>
+                <button id="viewRankingBtn" class="btn-secondary">🏆 Ver Ranking</button>
+                <button id="shareBtn" class="btn-secondary">📱 Partilhar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="levels.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
+

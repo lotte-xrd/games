@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Luz vs. Trevas ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela 1: Início -->
+    <div id="startScreen" class="screen active">
+        <div class="start-content">
+            <h1 class="logo">LUZ vs. TREVAS ✨</h1>
+            <p class="intro-text">A tua missão: acender o caminho. Toca apenas na luz.</p>
+            <button id="startBtn" class="btn-primary">Começar</button>
+            <button id="rankingBtn" class="btn-secondary">🏆 Ver Ranking</button>
+        </div>
+    </div>
+
+    <!-- Tela 1.5: Seleção de Nome -->
+    <div id="nameScreen" class="screen">
+        <div class="name-content">
+            <h2 class="name-title">Qual é o teu nome?</h2>
+            <input type="text" id="playerName" class="name-input" placeholder="Digita o teu nome" maxlength="20" autocomplete="off">
+            <p class="name-hint">Este nome aparecerá no ranking</p>
+            <button id="confirmNameBtn" class="btn-primary">Confirmar e Jogar</button>
+            <button id="backToStartBtn" class="btn-secondary">Voltar</button>
+        </div>
+    </div>
+
+    <!-- Tela 6: Ranking -->
+    <div id="rankingScreen" class="screen">
+        <div class="ranking-content">
+            <h2 class="ranking-title">🏆 Ranking</h2>
+            <div id="rankingList" class="ranking-list"></div>
+            <div class="ranking-pagination">
+                <button id="prevPageBtn" class="pagination-btn" disabled>← Anterior</button>
+                <span id="pageInfo" class="page-info">Página 1</span>
+                <button id="nextPageBtn" class="pagination-btn">Próxima →</button>
+            </div>
+            <button id="backToStartFromRankingBtn" class="btn-primary">Voltar ao Início</button>
+        </div>
+    </div>
+
+    <!-- Tela 2: Gameplay -->
+    <div id="gameScreen" class="screen">
+        <div class="game-ui">
+            <div class="ui-top">
+                <div class="score-container">
+                    <span class="label">Pontos:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="timer-container">
+                    <span class="label">Tempo:</span>
+                    <span id="timer">60</span>
+                </div>
+                <div class="lives-container">
+                    <span class="label">Vidas:</span>
+                    <span id="lives">3</span>
+                </div>
+            </div>
+            <div class="combo-indicator" id="comboIndicator">
+                <span id="comboText">COMBO x<span id="comboMultiplier">1</span></span>
+            </div>
+        </div>
+        <div id="gameArea" class="game-area"></div>
+    </div>
+
+    <!-- Tela 3: Reflexão Intermediária -->
+    <div id="reflectionScreen" class="screen">
+        <div class="reflection-content">
+            <p id="reflectionText" class="reflection-text"></p>
+        </div>
+    </div>
+
+    <!-- Tela 4: Fim de Jogo -->
+    <div id="gameOverScreen" class="screen">
+        <div class="gameover-content">
+            <h2 id="gameOverTitle" class="gameover-title"></h2>
+            <p id="gameOverVerse" class="gameover-verse"></p>
+            <div class="final-score">
+                <p>Pontuação Final: <span id="finalScore">0</span></p>
+                <p>Esferas de Luz: <span id="lightCount">0</span></p>
+                <p>Precisão: <span id="accuracy">0%</span></p>
+            </div>
+            <div class="gameover-buttons">
+                <button id="playAgainBtn" class="btn-primary">🔁 Jogar de novo</button>
+                <button id="readMessageBtn" class="btn-secondary">📖 Ler a mensagem</button>
+                <button id="viewRankingBtn" class="btn-secondary">🏆 Ver Ranking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela 5: Mensagem Evangelística -->
+    <div id="messageScreen" class="screen">
+        <div class="message-content">
+            <h2 class="message-title">A luz de Cristo está sempre a brilhar</h2>
+            <p class="message-text">A luz de Cristo está sempre a brilhar — mesmo quando erramos o alvo.<br>Ele é a verdadeira vitória sobre as trevas.</p>
+            <div class="verse-box">
+                <p class="verse-symbol">✝</p>
+                <p class="verse-text">João 1:5</p>
+                <p class="verse-quote">"A luz brilha nas trevas, e as trevas não a derrotaram."</p>
+            </div>
+            <div class="message-buttons">
+                <button id="backToGameBtn" class="btn-primary">🔁 Jogar outra vez</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Efeitos visuais -->
+    <div id="flashEffect" class="flash-effect"></div>
+    <div id="glowEffect" class="glow-effect"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
